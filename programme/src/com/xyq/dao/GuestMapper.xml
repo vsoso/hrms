@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.GuestMapper">
+    <insert id="addGuest" parameterType="com.xyq.model.Guest">
+        insert into guest (g_id,g_name,g_password,g_applicationstatus) values (guest_seq.nextval,#{g_name},#{g_password},0)
+    </insert>
+    <select id="checkGuest" parameterType="com.xyq.model.Guest" resultType="com.xyq.model.Guest">
+        select g_id,g_name,g_password,g_applicationstatus from guest where g_name = #{g_name} and g_password = #{g_password}
+    </select>
+    <select id="checkGuestForName" parameterType="com.xyq.model.Guest" resultType="com.xyq.model.Guest">
+        select g_id,g_name,g_password,g_applicationstatus from guest where g_name = #{g_name}
+    </select>
+</mapper>

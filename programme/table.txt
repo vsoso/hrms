@@ -1,0 +1,124 @@
+guest表 游客表
+g_id 主 
+g_name 用户名
+g_password 密码
+g_applicationstatus 申请状态 0没有 1有面试消息 2已录取（不再能投简历）
+
+
+resume表 简历表
+r_id 主
+r_gid 对应guest表
+r_name 姓名
+r_age 年龄
+r_ethnicity 名族
+r_phone 电话
+r_height 身高
+r_weight 体重
+r_marrige 婚姻状态
+r_address 地址
+r_schoolofgraduation 毕业学校
+r_selfassessment 自我评价
+r_intership 实习经历
+r_award 曾获奖励
+
+
+interview表 面试表
+i_id 主
+i_cid 对应company表
+i_gid 对应guest表
+i_interviewtime 面试时间
+i_interviewaddress 面试地点
+i_rmid 对应的recruitment表
+i_gstatus 求职者确认状态（0没有 1放弃 2确认）
+i_result 面试结果（仅管理员，时间限制）
+
+
+company表 公司表
+c_id 主
+c_name 公司名
+c_companyscale 公司规模
+c_address 公司地址
+c_phone 公司联系电话
+
+
+administer表 管理员表
+a_id 主
+a_name 用户名
+a_password 密码
+a_cid 对应的公司
+
+
+department表 部门表
+d_id 主
+d_name 部门名
+d_cid 部门所在的公司
+d_cratetime 部门创建时间
+
+
+job表 职位表
+j_id 主
+j_did 职位所在的部门
+j_createtime 职位创建时间
+
+
+employee表 员工表
+e_id 主
+e_name 用户名
+e_password 密码
+e_realname 真实姓名
+e_age 年龄
+e_ethnicity 名族
+e_phone 电话
+e_marrige 婚姻状态
+e_address 地址
+e_hiretime 入职时间
+e_cid 公司
+e_did 部门
+e_jid 职位
+e_basicwage 基本工资
+e_workstarttime 上班时间
+e_workendtime 下班时间
+e_workstatus 状态（0离职时只可查看 1试用 2在职）
+
+
+salary表 薪资表
+s_id 主
+s_eid 对应的员工
+s_bonus 奖金
+s_date 薪资对应时间
+s_status 员工确认结果（0没有 1复查 2确认）
+
+
+reward表 奖惩表
+re_id 主
+re_eid 对应的员工
+re_money 奖惩金额
+re_time 奖惩时间
+re_reason 奖惩理由
+
+
+attendance表 出勤表
+at_id 主
+at_eid 对应的员工
+at_daytime 考勤时间
+at_checkresult 考勤结果
+
+
+train表 培训表
+t_id 主
+t_cid 培训的员工
+t_time 培训时间
+t_address 培训地址
+t_train 培训内容
+
+
+recruitment表 招聘表
+rm_id 主
+rm_cid 对应的公司
+rm_did 对应的部门
+rm_jid 对应的职位
+rm_peopleneeded 需求的人数（为0自动结束招聘）
+rm_requirement 职位需求
+rm_money 职位工资
+rm_workplace 工作地点
+rm_gid 对应的应聘者（新建，not null区分）

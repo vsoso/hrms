@@ -12,7 +12,9 @@
   </head>
   <body>
     <div>
-
+      <a href="guest"><input type="button" value="求职者入口"></a>
+      <a href="employee"><input type="button" value="员工入口"></a>
+      <a href="administer"><input type="button" value="管理员入口"></a>
     </div>
   </body>
 </html>
