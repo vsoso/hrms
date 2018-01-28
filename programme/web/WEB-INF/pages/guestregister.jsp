@@ -13,7 +13,7 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
-    <title>标题</title>
+    <title>求职者注册</title>
 </head>
 <body>
 <div>
@@ -25,14 +25,14 @@
         密码：<input type="password" name="g_password" id="g_password"><span></span><div id="d1"></div><div id="d2"></div><div id="d3"></div><br/>
         确认密码：<input type="password" name="g_passwordRe" id="g_passwordRe"><span></span><br/>
         已有账号 <a href="guest"><span style="color: cornflowerblue">立即登录</span></a><br/>
-        <input type="submit" value="注册">
+        <input type="submit" value="注册"><a href="../../index.jsp"><input type="button" value="返回"></a>
     </form>
 </div>
 </body>
 <script src="js/jquery-3.2.1.js"></script>
 <script>
     $(document).ready(function () {
-        $("#d1,#d2,#d3").css({"width":"25px","height":"25px","float":"left"})
+        $("#d1,#d2,#d3").css({"width":"22px","height":"22px","float":"left","display":"inline"})
         $("#g_name").bind('input propertychange blur',function () {
             if($(this).val()==null||$(this).val()==""){
                 $(this).next().html("不能为空")
@@ -46,11 +46,12 @@
             if($(this).val()==null||$(this).val()==""){
                 $(this).next().html("不能为空")
             }else if ($(this).val().length<4){
-                $(this).parent().next().html("密码至少为4位")
+                $(this).next().html("密码至少为4位")
                 $("#d1").hide()
                 $("#d2").hide()
                 $("#d3").hide()
             }else if ($(this).val().length>=4&&$(this).val().length<=6){
+                $(this).next().html("")
                 $("#d1").css("background-color","red")
                 $("#d1").html("低")
                 $("#d1").show()
@@ -61,6 +62,7 @@
                 $("#d3").html("高")
                 $("#d3").hide()
             }else if ($(this).val().length>=7&&$(this).val().length<=10){
+                $(this).next().html("")
                 $("#d1").css("background-color","red")
                 $("#d1").html("低")
                 $("#d2").show()
@@ -71,6 +73,7 @@
                 $("#d3").html("高")
                 $("#d3").hide()
             } else if ($(this).val().length>10){
+                $(this).next().html("")
                 $("#d1").css("background-color","red")
                 $("#d1").html("低")
                 $("#d1").show()

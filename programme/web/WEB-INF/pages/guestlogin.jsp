@@ -13,7 +13,7 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
-    <title>求职者入口</title>
+    <title>求职者登录</title>
 </head>
 <body>
     <a href="guest-none">先去看看</a><br/>
@@ -24,7 +24,7 @@
             用户名：<input type="text" name="g_name" id="g_name"><span></span><br/>
             密码：<input type="password" name="g_password" id="g_password"><span></span><br/>
             没有账号?<a href="guestregister"><span style="color: cornflowerblue">马上注册</span></a><br/>
-            <input type="submit" value="登录">
+            <input type="submit" value="登录"><a href="../../index.jsp"><input type="button" value="返回"></a>
         </form>
     </div>
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.ResumeMapper">
+    <insert id="addResume" parameterType="com.xyq.model.Resume">
+        insert into resume (r_id,r_gid,r_name,r_age,r_ethnicity,r_phone,r_height,r_weight,r_marrige,r_address,r_schoolofgraduation,r_selfassessment,r_intership,r_award) values (resume_seq.nextval,#{r_gid},#{r_name},#{r_age},#{r_ethnicity},#{r_phone},#{r_height},#{r_weight},#{r_marrige},#{r_address},#{r_schoolofgraduation},#{r_selfassessment},#{r_intership},#{r_award})
+    </insert>
+    <select id="getResumeByGid" parameterType="com.xyq.model.Guest" resultType="com.xyq.model.Resume">
+        select r_id,r_gid,r_name,r_age,r_ethnicity,r_phone,r_height,r_weight,r_marrige,r_address,r_schoolofgraduation,r_selfassessment,r_intership,r_award from resume where r_gid=#{g_id}
+    </select>
+</mapper>
