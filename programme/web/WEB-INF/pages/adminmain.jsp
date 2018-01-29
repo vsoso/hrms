@@ -19,11 +19,20 @@
 <body>
     欢迎你,${admin.a_name}
     <input type="button" value="招聘信息" id="recruitment">
-    <div style="display: none" id="rm_recruitment">
-        <c:forEach items="${recruitments}" var="rec">
-            ${rec}<br/>
-        </c:forEach>
-        <input type="button" value="新建招聘" id="showrecruitment">
+    <div id="rm_recruitment" style="display: none">
+        <table id="showallrecruitment">
+            <tr>
+                <td>职位</td>
+                <td>申请人数</td>
+            </tr>
+            <c:forEach items="${recruitments}" var="rec">
+                <tr>
+                    <td><a href="checkRecruitment?rm_id=${rec.rm_id}">${rec.rm_name}</a></td>
+                    <td><a href="checkRecruitment?rm_id=${rec.rm_id}">${rec.rm_applycount}</a></td>
+                </tr>
+            </c:forEach>
+            <input type="button" value="新建招聘" id="showrecruitment">
+        </table>
     </div>
     <div id="newrecruitment" style="display: none;">
         <form action="addRecruitment" method="post">

@@ -2,9 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xyq.dao.RecruitmentMapper">
     <insert id="addRecruitment" parameterType="com.xyq.model.Recruitment">
-        insert into recruitment (rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid) values (recruitment_seq.nextval,#{rm_cid},#{rm_did},#{rm_jid},#{rm_name},#{rm_peopleneeded},#{rm_requirement},#{rm_money},#{rm_workplace},#{rm_gid})
+        insert into recruitment (rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid,rm_applycount) values (recruitment_seq.nextval,#{rm_cid},#{rm_did},#{rm_jid},#{rm_name},#{rm_peopleneeded},#{rm_requirement},#{rm_money},#{rm_workplace},#{rm_gid},#{rm_applycount})
     </insert>
-    <select id="getRecruitment" parameterType="com.xyq.model.Recruitment" resultType="com.xyq.model.Recruitment">
-        select rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid from recruitment where rm_gid = 0
+    <select id="getRecruitment" resultType="com.xyq.model.Recruitment">
+        select rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid,rm_applycount from recruitment where rm_gid = 0
     </select>
+    <select id="getRecruitmentByAdmin" parameterType="com.xyq.model.Administer" resultType="com.xyq.model.Recruitment">
+        select rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid,rm_applycount from recruitment where rm_cid = #{a_cid} and rm_gid = 0
+    </select>
+    <update id="updateRecruitment" parameterType="com.xyq.model.Recruitment">
+        update recruitment set rm_cid = #{rm_cid},rm_did = #{rm_did},rm_jid = #{rm_jid},rm_name = #{rm_name},rm_peopleneeded = #{rm_peopleneeded},rm_requirement = #{rm_requirement},rm_money = #{rm_money},rm_workplace = #{rm_workplace},rm_gid = #{rm_gid},rm_applycount =#{rm_applycount} where rm_id=#{rm_id} and rm_gid = 0
+    </update>
+    <select id="getRecruitmentById" parameterType="int" resultType="com.xyq.model.Recruitment">
+        select rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid,rm_applycount from recruitment where rm_id = #{value}
+    </select>
+    <delete id="deleteRecruitment" parameterType="com.xyq.model.Recruitment">
+        delete from recruitment where rm_id = #{rm_id}
+    </delete>
 </mapper>

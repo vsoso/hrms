@@ -139,7 +139,13 @@ public class GuestController {
         Recruitment recruitment= (Recruitment) session.getAttribute("recruitment");
         Guest guest= (Guest) session.getAttribute("guest");
         recruitment.setRm_gid(guest.getG_id());
+        Recruitment recruitment1=recruitment;
+        int applycount=recruitment1.getRm_applycount();
+        recruitment.setRm_applycount(0);
         recruitmentService.addRecruitment(recruitment);
+        recruitment1.setRm_applycount(applycount+1);
+        recruitment1.setRm_gid(0);
+        recruitmentService.updateRecruitment(recruitment1);
         return "guestmain";
     }
 }

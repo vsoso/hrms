@@ -34,7 +34,6 @@
                 </tr>
             </c:forEach>
         </table>
-
     </div>
     <div style="display: none" id="r_resume">
         <c:if test="${resumecount!=0}">

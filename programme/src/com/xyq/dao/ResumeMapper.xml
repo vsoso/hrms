@@ -13,4 +13,5 @@
     <delete id="deleteResume" parameterType="com.xyq.model.Resume">
         delete from resume where r_gid=#{r_gid}
     </delete>
+
 </mapper>

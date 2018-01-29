@@ -3,6 +3,8 @@ package com.xyq.dao;
 import com.xyq.model.Guest;
 import com.xyq.model.Resume;
 
+import java.util.List;
+
 /**
  * Created by asus on 2018/1/28.
  */

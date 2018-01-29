@@ -16,11 +16,12 @@ public class Recruitment implements Serializable {
     private String rm_money;
     private String rm_workplace;
     private int rm_gid;
+    private int rm_applycount;
 
     public Recruitment() {
     }
 
-    public Recruitment(int rm_id, int rm_cid, int rm_did, int rm_jid, String rm_name, int rm_peopleneeded, String rm_requirement, String rm_money, String rm_workplace, int rm_gid) {
+    public Recruitment(int rm_id, int rm_cid, int rm_did, int rm_jid, String rm_name, int rm_peopleneeded, String rm_requirement, String rm_money, String rm_workplace, int rm_gid, int rm_applycount) {
         this.rm_id = rm_id;
         this.rm_cid = rm_cid;
         this.rm_did = rm_did;
@@ -31,6 +32,7 @@ public class Recruitment implements Serializable {
         this.rm_money = rm_money;
         this.rm_workplace = rm_workplace;
         this.rm_gid = rm_gid;
+        this.rm_applycount = rm_applycount;
     }
 
     public int getRm_id() {
@@ -113,6 +115,14 @@ public class Recruitment implements Serializable {
         this.rm_gid = rm_gid;
     }
 
+    public int getRm_applycount() {
+        return rm_applycount;
+    }
+
+    public void setRm_applycount(int rm_applycount) {
+        this.rm_applycount = rm_applycount;
+    }
+
     @Override
     public String toString() {
         return "Recruitment{" +
@@ -126,6 +136,7 @@ public class Recruitment implements Serializable {
                 ", rm_money='" + rm_money + '\'' +
                 ", rm_workplace='" + rm_workplace + '\'' +
                 ", rm_gid=" + rm_gid +
+                ", rm_applycount=" + rm_applycount +
                 '}';
     }
 }
