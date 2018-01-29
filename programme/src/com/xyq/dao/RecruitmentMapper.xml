@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xyq.dao.RecruitmentMapper">
     <insert id="addRecruitment" parameterType="com.xyq.model.Recruitment">
-        insert into recruitment (rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid) values (recruitment_seq.nextval,#{rm_cid},#{em_did},#{rm_jid},#{rm_name},#{rm_peopleneeded},#{rm_requirement},#{rm_money},#{rm_workplace},#{rm_gid})
+        insert into recruitment (rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid) values (recruitment_seq.nextval,#{rm_cid},#{rm_did},#{rm_jid},#{rm_name},#{rm_peopleneeded},#{rm_requirement},#{rm_money},#{rm_workplace},#{rm_gid})
     </insert>
     <select id="getRecruitment" parameterType="com.xyq.model.Recruitment" resultType="com.xyq.model.Recruitment">
-        select rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid from recruitment
+        select rm_id,rm_cid,rm_did,rm_jid,rm_name,rm_peopleneeded,rm_requirement,rm_money,rm_workplace,rm_gid from recruitment where rm_gid = 0
     </select>
 </mapper>

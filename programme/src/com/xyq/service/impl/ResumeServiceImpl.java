@@ -17,12 +17,22 @@ public class ResumeServiceImpl implements ResumeService {
     private ResumeMapper resumeMapper;
 
     @Override
-    public Resume addResume(Resume resume) {
-        return resumeMapper.addResume(resume);
+    public void addResume(Resume resume) {
+       resumeMapper.addResume(resume);
     }
 
     @Override
     public Resume getResumeByGid(Guest guest) {
-        return getResumeByGid(guest);
+        return resumeMapper.getResumeByGid(guest);
+    }
+
+    @Override
+    public void updateResume(Resume resume) {
+        resumeMapper.updateResume(resume);
+    }
+
+    @Override
+    public void deleteResume(Resume resume) {
+        resumeMapper.deleteResume(resume);
     }
 }

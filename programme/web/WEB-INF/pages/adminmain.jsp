@@ -64,7 +64,7 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="submit" value="新建招聘"></td>
+                    <td><input type="submit" value="新建招聘" id="addnewRe"></td>
                     <td><input type="button" value="取消创建" id="cancelrecruitment"></td>
                     <td></td>
                 </tr>
@@ -83,6 +83,9 @@
         })
         $("#cancelrecruitment").click(function () {
             $("#newrecruitment").hide()
+        })
+        $("#addnewRe").click(function () {
+            alert("新建简历成功！")
         })
     })
 </script>

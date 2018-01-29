@@ -8,6 +8,6 @@ import java.util.List;
  * Created by asus on 2018/1/28.
  */
 public interface RecruitmentService {
-    Recruitment addRecruitment(Recruitment recruitment);
+    void addRecruitment(Recruitment recruitment);
     List<Recruitment> getRecruitment();
 }

@@ -7,6 +7,8 @@ import com.xyq.model.Resume;
  * Created by asus on 2018/1/28.
  */
 public interface ResumeMapper {
-    Resume addResume(Resume resume);
+    void addResume(Resume resume);
     Resume getResumeByGid(Guest guest);
+    void updateResume(Resume resume);
+    void deleteResume(Resume resume);
 }

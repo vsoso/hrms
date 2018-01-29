@@ -7,4 +7,10 @@
     <select id="getResumeByGid" parameterType="com.xyq.model.Guest" resultType="com.xyq.model.Resume">
         select r_id,r_gid,r_name,r_age,r_ethnicity,r_phone,r_height,r_weight,r_marrige,r_address,r_schoolofgraduation,r_selfassessment,r_intership,r_award from resume where r_gid=#{g_id}
     </select>
+    <update id="updateResume" parameterType="com.xyq.model.Resume">
+        update resume set r_name = #{r_name},r_age = #{r_age},r_ethnicity = #{r_ethnicity},r_phone = #{r_phone},r_height = #{r_height},r_weight = #{r_weight},r_marrige = #{r_marrige},r_address = #{r_address},r_schoolofgraduation = #{r_schoolofgraduation},r_selfassessment = #{r_selfassessment},r_intership = #{r_intership},r_award = #{r_award} where r_gid=#{r_gid}
+    </update>
+    <delete id="deleteResume" parameterType="com.xyq.model.Resume">
+        delete from resume where r_gid=#{r_gid}
+    </delete>
 </mapper>

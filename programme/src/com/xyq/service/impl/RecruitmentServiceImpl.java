@@ -17,8 +17,8 @@ public class RecruitmentServiceImpl implements RecruitmentService {
     private RecruitmentMapper recruitmentMapper;
 
     @Override
-    public Recruitment addRecruitment(Recruitment recruitment) {
-        return recruitmentMapper.addRecruitment(recruitment);
+    public void addRecruitment(Recruitment recruitment) {
+        recruitmentMapper.addRecruitment(recruitment);
     }
 
     @Override

@@ -43,6 +43,8 @@ public class AministerController {
 
     @RequestMapping("/addRecruitment")
     private String addrecruitment(Recruitment recruitment, HttpSession session)throws  Exception{
+        Administer administer= (Administer) session.getAttribute("admin");
+        recruitment.setRm_cid(administer.getA_cid());
         recruitmentService.addRecruitment(recruitment);
         List<Recruitment> recruitments=recruitmentService.getRecruitment();
         session.setAttribute("recruitments",recruitments);
