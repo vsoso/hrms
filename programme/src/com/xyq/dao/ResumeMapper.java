@@ -13,4 +13,5 @@ public interface ResumeMapper {
     Resume getResumeByGid(Guest guest);
     void updateResume(Resume resume);
     void deleteResume(Resume resume);
+    List<Resume> getResume();
 }

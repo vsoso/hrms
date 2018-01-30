@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.InterviewMapper">
+    <insert id="addInterview" parameterType="com.xyq.model.Interview">
+        insert into interview (i_id,i_gid,i_interviewtime,i_interviewaddress,i_rmid,i_gstatus,i_result) values (interview_seq.nextval,#{i_gid},#{i_interviewtime},#{i_interviewaddress},#{i_rmid},#{i_gstatus},#{i_result})
+    </insert>
+    <select id="getInterviewByGid" parameterType="int" resultType="com.xyq.model.Interview">
+        select i_id,i_gid,i_interviewtime,i_interviewaddress,i_rmid,i_gstatus,i_result from interview where i_gid=#{value}
+    </select>
+</mapper>

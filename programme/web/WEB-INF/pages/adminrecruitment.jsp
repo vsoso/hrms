@@ -17,6 +17,7 @@
     <title>标题</title>
 </head>
 <body>
+<a href="toadminmain"><input type="button" value="返回"></a>
 <form action="updateRecruitment" method="post">
     <input type="hidden" name="rm_id" value="${recruitment.rm_id}">
     <input type="hidden" name="rm_cid" value="${recruitment.rm_cid}">
@@ -70,7 +71,13 @@
 <div>
     应聘者：
     <c:forEach items="${guests}" var="gu">
-        <a href="checkGuest?g_id=${gu.g_id}">${gu.g_name}</a>
+        <c:forEach items="${resumes}" var="res">
+            <a href="checkGuest?g_id=${gu.g_id}">
+                <c:if test="${gu.g_id==res.r_gid}">
+                    <c:out value="${res.r_name}"/>
+                </c:if>
+            </a>
+        </c:forEach>
     </c:forEach>
 </div>
 </body>

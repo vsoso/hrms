@@ -7,6 +7,7 @@ import com.xyq.service.ResumeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by asus on 2018/1/28.
@@ -34,5 +35,10 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public void deleteResume(Resume resume) {
         resumeMapper.deleteResume(resume);
+    }
+
+    @Override
+    public List<Resume> getResume() {
+        return resumeMapper.getResume();
     }
 }

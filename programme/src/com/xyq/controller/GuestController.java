@@ -1,11 +1,7 @@
 package com.xyq.controller;
 
-import com.xyq.model.Guest;
-import com.xyq.model.Recruitment;
-import com.xyq.model.Resume;
-import com.xyq.service.GuestService;
-import com.xyq.service.RecruitmentService;
-import com.xyq.service.ResumeService;
+import com.xyq.model.*;
+import com.xyq.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,6 +21,10 @@ public class GuestController {
     private ResumeService resumeService;
     @Resource
     private RecruitmentService recruitmentService;
+    @Resource
+    private InterviewService interviewService;
+    @Resource
+    private CompanyService companyService;
 
     @RequestMapping("/guest")
     public String guest()throws Exception{
@@ -81,6 +81,10 @@ public class GuestController {
             }
             List<Recruitment> recruitments=recruitmentService.getRecruitment();
             session.setAttribute("recruitments",recruitments);
+            List<Interview> interviews=interviewService.getInterviewByGid(guest1.getG_id());
+            session.setAttribute("interviews",interviews);
+            List<Company> companies= companyService.getCompany();
+            session.setAttribute("companies",companies);
             session.setAttribute("resume",resume);
             session.setAttribute("loginResult","");
             session.setAttribute("guest",guest1);

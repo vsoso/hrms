@@ -36,4 +36,9 @@ public class GuestServiceImpl implements GuestService {
     public List<Guest> getGuestByRecruitment(Recruitment recruitment) {
         return guestMapper.getGuestByRecruitment(recruitment);
     }
+
+    @Override
+    public Guest getGuestById(int g_id) {
+        return guestMapper.getGuestById(g_id);
+    }
 }

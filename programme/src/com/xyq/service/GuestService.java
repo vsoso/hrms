@@ -13,4 +13,5 @@ public interface GuestService {
     Guest checkGuest(Guest guest);
     Guest checkGuestForName(Guest guest);
     List<Guest> getGuestByRecruitment(Recruitment recruitment);
+    Guest getGuestById(int g_id);
 }

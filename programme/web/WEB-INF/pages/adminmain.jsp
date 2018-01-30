@@ -22,7 +22,7 @@
     <div id="rm_recruitment" style="display: none">
         <table id="showallrecruitment">
             <tr>
-                <td>职位</td>
+                <td>招聘职位</td>
                 <td>申请人数</td>
             </tr>
             <c:forEach items="${recruitments}" var="rec">

@@ -13,5 +13,7 @@
     <delete id="deleteResume" parameterType="com.xyq.model.Resume">
         delete from resume where r_gid=#{r_gid}
     </delete>
-
+    <select id="getResume" resultType="com.xyq.model.Resume">
+        select r_id,r_gid,r_name,r_age,r_ethnicity,r_phone,r_height,r_weight,r_marrige,r_address,r_schoolofgraduation,r_selfassessment,r_intership,r_award from resume
+    </select>
 </mapper>

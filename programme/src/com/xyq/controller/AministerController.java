@@ -1,11 +1,7 @@
 package com.xyq.controller;
 
-import com.xyq.model.Administer;
-import com.xyq.model.Guest;
-import com.xyq.model.Recruitment;
-import com.xyq.service.AdministerService;
-import com.xyq.service.GuestService;
-import com.xyq.service.RecruitmentService;
+import com.xyq.model.*;
+import com.xyq.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,6 +21,10 @@ public class AministerController {
     private RecruitmentService recruitmentService;
     @Resource
     private GuestService guestService;
+    @Resource
+    private ResumeService resumeService;
+    @Resource
+    private InterviewService interviewService;
 
     @RequestMapping("/administer")
     private String administer()throws  Exception{
@@ -64,6 +64,8 @@ public class AministerController {
         session.setAttribute("recruitment",recruitment);
         List<Guest> guests=guestService.getGuestByRecruitment(recruitment);
         session.setAttribute("guests",guests);
+        List<Resume> resumes=resumeService.getResume();
+        session.setAttribute("resumes",resumes);
         return "adminrecruitment";
     }
 
@@ -86,6 +88,32 @@ public class AministerController {
         Administer administer= (Administer) session.getAttribute("admin");
         List<Recruitment> recruitments=recruitmentService.getRecruitmentByAdmin(administer);
         session.setAttribute("recruitments",recruitments);
+        return "adminrecruitment";
+    }
+
+    @RequestMapping("/checkGuest")
+    private String checkGuest(HttpServletRequest request,HttpSession session)throws  Exception{
+        int g_id = Integer.parseInt(request.getParameter("g_id"));
+        Guest guest=new Guest();
+        guest.setG_id(g_id);
+        Resume resume=resumeService.getResumeByGid(guest);
+        session.setAttribute("resume",resume);
+        return "admintoguest";
+    }
+
+    @RequestMapping("/toadminrecruitment")
+    private String toadminrecruitment()throws  Exception{
+        return "adminrecruitment";
+    }
+
+    @RequestMapping("/toadminmain")
+    private String toadminmain()throws  Exception{
+        return "adminmain";
+    }
+
+    @RequestMapping("/addInterview")
+    private String addInterview(Interview interview,HttpServletRequest request, HttpSession session)throws  Exception{
+        interviewService.addInterview(interview);
         return "adminrecruitment";
     }
 }

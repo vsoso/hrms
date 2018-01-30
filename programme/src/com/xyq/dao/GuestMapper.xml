@@ -13,4 +13,7 @@
     <select id="getGuestByRecruitment" parameterType="com.xyq.model.Recruitment" resultType="com.xyq.model.Guest">
         select g_id,g_name,g_password,g_applicationstatus from guest,recruitment where g_id=rm_gid and rm_cid = #{rm_cid} and rm_did = #{rm_did} and rm_jid = #{rm_jid} and rm_name = #{rm_name}and rm_peopleneeded = #{rm_peopleneeded}and rm_requirement = #{rm_requirement} and rm_money = #{rm_money} and rm_workplace = #{rm_workplace} and rm_applycount =0
     </select>
+    <select id="getGuestById" parameterType="int" resultType="com.xyq.model.Guest">
+        select g_id,g_name,g_password,g_applicationstatus from guest where g_id = #{g_id}
+    </select>
 </mapper>

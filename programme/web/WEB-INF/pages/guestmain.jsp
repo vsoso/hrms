@@ -18,7 +18,46 @@
 </head>
 <body>
     欢迎你，${guest.g_name}
-    <input type="button" value="个人简历" id="resume"><input type="button" value="查看招聘" id="recruitment">
+    <input type="button" value="个人简历" id="resume"><input type="button" value="查看招聘" id="recruitment"><input type="button" value="面试邀请" id="interview">
+    <div id="i_interview" style="display: none">
+        <table>
+            <tr>
+                <td>应聘职位</td>
+                <td>所属公司</td>
+                <td>面试时间</td>
+                <td>面试地点</td>
+                <td></td>
+            </tr>
+            <c:forEach items="${interviews}" var="inte">
+                <tr>
+                    <td>
+                        <c:forEach items="${recruitments}" var="rec">
+                            <c:if test="${rec.rm_id==inte.i_rmid}">
+                                ${rec.rm_name}
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                    <td>
+                        <c:forEach items="${recruitments}" var="rec">
+                            <c:if test="${rec.rm_id==inte.i_rmid}">
+                                <c:forEach items="${companies}" var="com">
+                                    <c:if test="${rec.rm_cid==com.c_id}">
+                                        ${com.c_name}
+                                    </c:if>
+                                </c:forEach>
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                    <td>${inte.i_interviewtime}</td>
+                    <td>${inte.i_interviewaddress}</td>
+                    <td>
+                        <a href="acceptInterview?i_id=${inte.i_id}"><input type="button" value="接受面试"></a>
+                        <a href="refuseInterview?i_id=${inte.i_id}"><input type="button" value="放弃面试"></a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
     <div id="rm_recruitment" style="display: none">
         <table id="showallrecruitment">
             <tr>
@@ -199,6 +238,12 @@
         })
         $("#cancelresume").click(function () {
             $("#newresume").hide()
+        })
+        $("#interview").click(function () {
+            $("#r_resume").hide()
+            $("#newresume").hide()
+            $("#rm_recruitment").hide()
+            $("#i_interview").show()
         })
     })
 </script>
