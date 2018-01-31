@@ -13,5 +13,7 @@ public interface GuestMapper {
     Guest checkGuest(Guest guest);
     Guest checkGuestForName(Guest guest);
     List<Guest> getGuestByRecruitment(Recruitment recruitment);
+    List<Guest> getGuest();
     Guest getGuestById(int g_id);
+    void updateGuestApplicationstatus(Guest guest);
 }

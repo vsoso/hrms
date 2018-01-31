@@ -4,6 +4,7 @@ import com.xyq.model.*;
 import com.xyq.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -40,6 +41,12 @@ public class AministerController {
         }else{
             List<Recruitment> recruitments=recruitmentService.getRecruitmentByAdmin(administer1);
             session.setAttribute("recruitments",recruitments);
+            List<Interview> interviews=interviewService.getInterviewByCid(administer1.getA_cid());
+            session.setAttribute("interviews",interviews);
+            List<Guest> guests=guestService.getGuest();
+            session.setAttribute("guests",guests);
+            List<Resume> resumes=resumeService.getResume();
+            session.setAttribute("resumes",resumes);
             session.setAttribute("loginResult","");
             session.setAttribute("admin",administer1);
             return "adminmain";
@@ -113,7 +120,29 @@ public class AministerController {
 
     @RequestMapping("/addInterview")
     private String addInterview(Interview interview,HttpServletRequest request, HttpSession session)throws  Exception{
+        Administer administer= (Administer) session.getAttribute("admin");
         interviewService.addInterview(interview);
+        List<Interview> interviews=interviewService.getInterviewByCid(administer.getA_cid());
+        session.setAttribute("interviews",interviews);
         return "adminrecruitment";
+    }
+
+
+    @RequestMapping("/recruitEmployee")
+    private String recruitEmployee(HttpServletRequest request, HttpSession session)throws  Exception{
+        int intid= Integer.parseInt(request.getParameter("intid"));
+        Interview interview = new Interview();
+        interview.setI_id(intid);
+        interview.setI_gstatus(3);
+        interviewService.updateInterviewStatus(interview);
+        int gid=Integer.parseInt(request.getParameter("gid"));
+        Guest guest=new Guest();
+        guest.setG_id(gid);
+        guest.setG_applicationstatus(1);
+        guestService.updateGuestApplicationstatus(guest);
+        Administer administer= (Administer) session.getAttribute("admin");
+        List<Interview> interviews=interviewService.getInterviewByCid(administer.getA_cid());
+        session.setAttribute("interviews",interviews);
+        return "adminmain";
     }
 }

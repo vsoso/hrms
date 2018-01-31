@@ -16,4 +16,10 @@
     <select id="getGuestById" parameterType="int" resultType="com.xyq.model.Guest">
         select g_id,g_name,g_password,g_applicationstatus from guest where g_id = #{g_id}
     </select>
+    <select id="getGuest" resultType="com.xyq.model.Guest">
+        select g_id,g_name,g_password,g_applicationstatus from guest
+    </select>
+    <update id="updateGuestApplicationstatus" parameterType="com.xyq.model.Guest">
+        update guest set g_applicationstatus = #{g_applicationstatus} where g_id = #{g_id}
+    </update>
 </mapper>

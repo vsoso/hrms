@@ -76,6 +76,7 @@
     <form action="addInterview" method="post">
         <input type="hidden" name="i_gid" value="${resume.r_gid}">
         <input type="hidden" name="i_rmid" value="${recruitment.rm_id}">
+        <input type="hidden" name="i_cid" value="${recruitment.rm_cid}">
         <table>
             <tr>
                 <td>面试时间：</td>

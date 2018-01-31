@@ -15,11 +15,21 @@ public class Interview implements Serializable {
     private int i_rmid;
     private int i_gstatus;
     private int i_result;
+    private int i_cid;
 
     public Interview() {
     }
 
-    public Interview(int i_id, int i_gid, String i_interviewtime, String i_interviewaddress, int i_rmid, int i_gstatus, int i_result) {
+    public int getI_cid() {
+        return i_cid;
+    }
+
+    public void setI_cid(int i_cid) {
+        this.i_cid = i_cid;
+    }
+
+    public Interview(int i_id, int i_gid, String i_interviewtime, String i_interviewaddress, int i_rmid, int i_gstatus, int i_result, int i_cid) {
+
         this.i_id = i_id;
         this.i_gid = i_gid;
         this.i_interviewtime = i_interviewtime;
@@ -27,6 +37,7 @@ public class Interview implements Serializable {
         this.i_rmid = i_rmid;
         this.i_gstatus = i_gstatus;
         this.i_result = i_result;
+        this.i_cid = i_cid;
     }
 
     public int getI_id() {

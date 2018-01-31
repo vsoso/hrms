@@ -58,6 +58,8 @@ public class GuestController {
                 session.setAttribute("resume",resume);
                 List<Recruitment> recruitments=recruitmentService.getRecruitment();
                 session.setAttribute("recruitments",recruitments);
+                List<Company> companies= companyService.getCompany();
+                session.setAttribute("companies",companies);
                 return "guestmain";
             }
         }else {

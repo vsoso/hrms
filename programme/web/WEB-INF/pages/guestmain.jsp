@@ -61,6 +61,9 @@
                         <c:if test="${inte.i_gstatus==2}">
                             你已放弃这次面试机会
                         </c:if>
+                        <c:if test="${inte.i_gstatus==3}">
+                            你已被该公司录取，请使用员工登录查看更多信息（账号密码相同）
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>
@@ -76,7 +79,15 @@
             <c:forEach items="${recruitments}" var="rec">
                 <tr>
                     <td><a href="seeRecruitment?rm_id=${rec.rm_id}">${rec.rm_name}</a></td>
-                    <td><a href="seeRecruitment?rm_id=${rec.rm_id}">${rec.rm_cid}</a></td>
+                    <td>
+                        <a href="seeRecruitment?rm_id=${rec.rm_id}">
+                            <c:forEach items="${companies}" var="com">
+                                <c:if test="${com.c_id==rec.rm_cid}">
+                                    ${com.c_name}
+                                </c:if>
+                            </c:forEach>
+                        </a>
+                    </td>
                     <td><a href="seeRecruitment?rm_id=${rec.rm_id}">${rec.rm_money}</a></td>
                 </tr>
             </c:forEach>

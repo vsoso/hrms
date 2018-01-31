@@ -10,5 +10,6 @@ import java.util.List;
 public interface InterviewMapper {
     void addInterview(Interview interview);
     List<Interview> getInterviewByGid(int gid);
+    List<Interview> getInterviewByCid(int cid);
     void updateInterviewStatus(Interview interview);
 }

@@ -18,7 +18,52 @@
 </head>
 <body>
     欢迎你,${admin.a_name}
-    <input type="button" value="招聘信息" id="recruitment">
+    <input type="button" value="招聘信息" id="recruitment"><input type="button" value="面试邀请" id="interview">
+    <div id="i_interview" style="display: none">
+        <table>
+            <tr>
+                <td>招聘职位</td>
+                <td>求职人员</td>
+                <td>面试时间</td>
+                <td>面试地点</td>
+                <td></td>
+            </tr>
+            <c:forEach items="${interviews}" var="inte">
+                <tr>
+                    <td>
+                        <c:forEach items="${recruitments}" var="rec">
+                            <c:if test="${rec.rm_id==inte.i_rmid}">
+                                ${rec.rm_name}
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                    <td>
+                        <c:forEach items="${guests}" var="gue">
+                            <c:if test="${gue.g_id==inte.i_gid}">
+                                ${gue.g_name}
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                    <td>${inte.i_interviewtime}</td>
+                    <td>${inte.i_interviewaddress}</td>
+                    <td>
+                        <c:if test="${inte.i_gstatus==0}">
+                            等待求职者确认
+                        </c:if>
+                        <c:if test="${inte.i_gstatus==1}">
+                            <input type="button" value="面试结果" class="i_result"><a href="recruitEmployee?intid=${inte.i_id}&gid=${inte.i_gid}" style="display: none"><input type="button"></a>
+                        </c:if>
+                        <c:if test="${inte.i_gstatus==2}">
+                            求职者放弃该次面试
+                        </c:if>
+                        <c:if test="${inte.i_gstatus==3}">
+                            已录用该员工
+                        </c:if>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
     <div id="rm_recruitment" style="display: none">
         <table id="showallrecruitment">
             <tr>
@@ -86,6 +131,7 @@
     $(document).ready(function () {
         $("#recruitment").click(function () {
             $("#rm_recruitment").show()
+            $("#i_interview").hide()
         })
         $("#showrecruitment").click(function () {
             $("#newrecruitment").show()
@@ -95,6 +141,15 @@
         })
         $("#addnewRe").click(function () {
             alert("新建简历成功！")
+        })
+        $("#interview").click(function () {
+            $("#i_interview").show()
+            $("#rm_recruitment").hide()
+        })
+        $(".i_result").click(function () {
+            if(confirm("确定录用为员工吗？")==true){
+                $(this).next().children("input").trigger("click")
+            }
         })
     })
 </script>

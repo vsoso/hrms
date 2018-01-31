@@ -26,6 +26,11 @@ public class InterviewServiceImpl implements InterviewService {
     }
 
     @Override
+    public List<Interview> getInterviewByCid(int cid) {
+        return interviewMapper.getInterviewByCid(cid);
+    }
+
+    @Override
     public void updateInterviewStatus(Interview interview) {
         interviewMapper.updateInterviewStatus(interview);
     }
