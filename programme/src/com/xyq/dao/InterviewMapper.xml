@@ -7,4 +7,7 @@
     <select id="getInterviewByGid" parameterType="int" resultType="com.xyq.model.Interview">
         select i_id,i_gid,i_interviewtime,i_interviewaddress,i_rmid,i_gstatus,i_result from interview where i_gid=#{value}
     </select>
+    <update id="updateInterviewStatus" parameterType="com.xyq.model.Interview">
+        update interview set i_gstatus = #{i_gstatus} where i_id = #{i_id}
+    </update>
 </mapper>

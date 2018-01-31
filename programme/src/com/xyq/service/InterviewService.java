@@ -10,4 +10,5 @@ import java.util.List;
 public interface InterviewService {
     void addInterview(Interview interview);
     List<Interview> getInterviewByGid(int gid);
+    void updateInterviewStatus(Interview interview);
 }

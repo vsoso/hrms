@@ -134,7 +134,7 @@ public class GuestController {
     }
 
     @RequestMapping("/toGuestMain")
-    public String toGuestMain(HttpServletRequest request,HttpSession session)throws Exception{
+    public String toGuestMain()throws Exception{
         return "guestmain";
     }
 
@@ -150,6 +150,32 @@ public class GuestController {
         recruitment1.setRm_applycount(applycount+1);
         recruitment1.setRm_gid(0);
         recruitmentService.updateRecruitment(recruitment1);
+        return "guestmain";
+    }
+
+    @RequestMapping("/acceptInterview")
+    public String acceptInterview(HttpServletRequest request,HttpSession session)throws Exception{
+        int i_id= Integer.parseInt(request.getParameter("i_id"));
+        Interview interview = new Interview();
+        interview.setI_id(i_id);
+        interview.setI_gstatus(1);
+        interviewService.updateInterviewStatus(interview);
+        Guest guest= (Guest) session.getAttribute("guest");
+        List<Interview> interviews=interviewService.getInterviewByGid(guest.getG_id());
+        session.setAttribute("interviews",interviews);
+        return "guestmain";
+    }
+
+    @RequestMapping("/refuseInterview")
+    public String refuseInterview(HttpServletRequest request,HttpSession session)throws Exception{
+        int i_id= Integer.parseInt(request.getParameter("i_id"));
+        Interview interview = new Interview();
+        interview.setI_id(i_id);
+        interview.setI_gstatus(2);
+        interviewService.updateInterviewStatus(interview);
+        Guest guest= (Guest) session.getAttribute("guest");
+        List<Interview> interviews=interviewService.getInterviewByGid(guest.getG_id());
+        session.setAttribute("interviews",interviews);
         return "guestmain";
     }
 }

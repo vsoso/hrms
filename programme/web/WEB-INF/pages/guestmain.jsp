@@ -51,8 +51,16 @@
                     <td>${inte.i_interviewtime}</td>
                     <td>${inte.i_interviewaddress}</td>
                     <td>
-                        <a href="acceptInterview?i_id=${inte.i_id}"><input type="button" value="接受面试"></a>
-                        <a href="refuseInterview?i_id=${inte.i_id}"><input type="button" value="放弃面试"></a>
+                        <c:if test="${inte.i_gstatus==0}">
+                            <a href="acceptInterview?i_id=${inte.i_id}"><input type="button" value="接受面试" id="accIn"></a>
+                            <input type="button" value="放弃面试" id="refIn"><a href="refuseInterview?i_id=${inte.i_id}" style="display: none"><input type="button" id="refInt"></a>
+                        </c:if>
+                        <c:if test="${inte.i_gstatus==1}">
+                            你已接受面试，请准时出席
+                        </c:if>
+                        <c:if test="${inte.i_gstatus==2}">
+                            你已放弃这次面试机会
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>
@@ -226,11 +234,13 @@
             $("#r_resume").hide()
             $("#newresume").hide()
             $("#rm_recruitment").show()
+            $("#i_interview").hide()
         })
         $("#resume").click(function () {
             $("#newresume").hide()
             $("#rm_recruitment").hide()
             $("#r_resume").show()
+            $("#i_interview").hide()
         })
         $("#showresume").click(function () {
             $("#r_resume").hide()
@@ -244,6 +254,14 @@
             $("#newresume").hide()
             $("#rm_recruitment").hide()
             $("#i_interview").show()
+        })
+        $("#accIn").click(function () {
+            alert("你已接受面试邀请，请准时出席")
+        })
+        $("#refIn").click(function () {
+            if(confirm("确认要放弃此次面试吗")==true){
+                $("#refInt").trigger("click")
+            }
         })
     })
 </script>
