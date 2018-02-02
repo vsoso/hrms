@@ -10,9 +10,9 @@ public class Employee implements Serializable {
     private String e_name;
     private String e_password;
     private String e_realname;
-    private int age;
+    private int e_age;
     private String e_ethnicity;
-    private int phone;
+    private int e_phone;
     private String e_marrige;
     private String e_address;
     private String e_hiretime;
@@ -27,14 +27,14 @@ public class Employee implements Serializable {
     public Employee() {
     }
 
-    public Employee(int e_id, String e_name, String e_password, String e_realname, int age, String e_ethnicity, int phone, String e_marrige, String e_address, String e_hiretime, int e_cid, int e_did, int e_jid, double e_basicwage, String e_workstarttime, String e_workendtime, int e_workstatus) {
+    public Employee(int e_id, String e_name, String e_password, String e_realname, int e_age, String e_ethnicity, int e_phone, String e_marrige, String e_address, String e_hiretime, int e_cid, int e_did, int e_jid, double e_basicwage, String e_workstarttime, String e_workendtime, int e_workstatus) {
         this.e_id = e_id;
         this.e_name = e_name;
         this.e_password = e_password;
         this.e_realname = e_realname;
-        this.age = age;
+        this.e_age = e_age;
         this.e_ethnicity = e_ethnicity;
-        this.phone = phone;
+        this.e_phone = e_phone;
         this.e_marrige = e_marrige;
         this.e_address = e_address;
         this.e_hiretime = e_hiretime;
@@ -79,13 +79,7 @@ public class Employee implements Serializable {
         this.e_realname = e_realname;
     }
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 
     public String getE_ethnicity() {
         return e_ethnicity;
@@ -95,12 +89,20 @@ public class Employee implements Serializable {
         this.e_ethnicity = e_ethnicity;
     }
 
-    public int getPhone() {
-        return phone;
+    public int getE_age() {
+        return e_age;
     }
 
-    public void setPhone(int phone) {
-        this.phone = phone;
+    public void setE_age(int e_age) {
+        this.e_age = e_age;
+    }
+
+    public int getE_phone() {
+        return e_phone;
+    }
+
+    public void setE_phone(int e_phone) {
+        this.e_phone = e_phone;
     }
 
     public String getE_marrige() {
@@ -190,9 +192,9 @@ public class Employee implements Serializable {
                 ", e_name='" + e_name + '\'' +
                 ", e_password='" + e_password + '\'' +
                 ", e_realname='" + e_realname + '\'' +
-                ", age=" + age +
+                ", e_age=" + e_age +
                 ", e_ethnicity='" + e_ethnicity + '\'' +
-                ", phone=" + phone +
+                ", e_phone=" + e_phone +
                 ", e_marrige='" + e_marrige + '\'' +
                 ", e_address='" + e_address + '\'' +
                 ", e_hiretime='" + e_hiretime + '\'' +

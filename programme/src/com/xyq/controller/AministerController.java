@@ -1,5 +1,6 @@
 package com.xyq.controller;
 
+import com.mysql.fabric.xmlrpc.base.Data;
 import com.xyq.model.*;
 import com.xyq.service.*;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +29,8 @@ public class AministerController {
     private ResumeService resumeService;
     @Resource
     private InterviewService interviewService;
+    @Resource
+    private EmployeeService employeeService;
 
     @RequestMapping("/administer")
     private String administer()throws  Exception{
@@ -143,6 +148,34 @@ public class AministerController {
         Administer administer= (Administer) session.getAttribute("admin");
         List<Interview> interviews=interviewService.getInterviewByCid(administer.getA_cid());
         session.setAttribute("interviews",interviews);
+        Employee employee=new Employee();
+        Date date=new Date();
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("YYYY-MM-dd");
+        String hiretime=simpleDateFormat.format(date);
+        employee.setE_hiretime(hiretime);
+        Guest guest1=guestService.getGuestById(gid);
+        employee.setE_name(guest1.getG_name());
+        employee.setE_password(guest1.getG_password());
+        employee.setE_workstatus(1);
+        Resume resume=resumeService.getResumeByGid(guest1);
+        employee.setE_realname(resume.getR_name());
+        employee.setE_age(resume.getR_age());
+        employee.setE_ethnicity(resume.getR_ethnicity());
+        employee.setE_phone(resume.getR_phone());
+        employee.setE_marrige(resume.getR_marrige());
+        employee.setE_address(resume.getR_address());
+        employee.setE_cid(administer.getA_cid());
+        int rm_id= Integer.parseInt(request.getParameter("rec"));
+        Recruitment recruitment=recruitmentService.getRecruitmentById(rm_id);
+        employee.setE_did(recruitment.getRm_did());
+        employee.setE_jid(recruitment.getRm_jid());
+        employee.setE_basicwage(0);
+        employee.setE_workstarttime("9:00");
+        employee.setE_workendtime("18:00");
+        System.out.println(employee);
+        employeeService.addEmployee(employee);
         return "adminmain";
     }
+
+
 }

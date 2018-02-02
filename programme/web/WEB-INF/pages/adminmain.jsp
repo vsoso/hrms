@@ -51,7 +51,11 @@
                             等待求职者确认
                         </c:if>
                         <c:if test="${inte.i_gstatus==1}">
-                            <input type="button" value="面试结果" class="i_result"><a href="recruitEmployee?intid=${inte.i_id}&gid=${inte.i_gid}" style="display: none"><input type="button"></a>
+                            <c:forEach items="${recruitments}" var="rec">
+                                <c:if test="${rec.rm_id==inte.i_rmid}">
+                                    <input type="button" value="面试结果" class="i_result"><a href="recruitEmployee?intid=${inte.i_id}&gid=${inte.i_gid}&rec=${rec.rm_id}" style="display: none"><input type="button"></a>
+                                </c:if>
+                            </c:forEach>
                         </c:if>
                         <c:if test="${inte.i_gstatus==2}">
                             求职者放弃该次面试
