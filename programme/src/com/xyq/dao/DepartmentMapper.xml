@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.DepartmentMapper">
+    <select id="getDepartment" resultType="com.xyq.model.Department">
+        select d_id,d_name,d_cid,d_createtime from department
+    </select>
+    <select id="getDepartmentById" parameterType="int" resultType="com.xyq.model.Department">
+        select d_id,d_name,d_cid,d_createtime from department where d_id = #{value}
+    </select>
+    <insert id="addDepartment" parameterType="com.xyq.model.Department">
+        insert into department (d_id,d_name,d_cid,d_createtime) values (department_seq.nextval,#{d_name},#{d_cid},#{d_createtime})
+    </insert>
+    <delete id="deleteDepartment" parameterType="com.xyq.model.Department">
+        delete from department where d_id = #{d_id}
+    </delete>
+    <update id="updateDepartment" parameterType="com.xyq.model.Department">
+        updeate department set d_id = #{d_id},d_name = #{d_name},d_cid = #{d_cid},d_createtime = #{d_createtime} where d_id = #{d_id}
+    </update>
+</mapper>
