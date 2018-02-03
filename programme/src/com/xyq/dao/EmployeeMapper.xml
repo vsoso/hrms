@@ -4,4 +4,13 @@
     <insert id="addEmployee" parameterType="com.xyq.model.Employee">
         insert into employee (e_id,e_name,e_password,e_realname,e_age,e_ethnicity,e_phone,e_marrige,e_address,e_hiretime,e_cid,e_did,e_jid,e_basicwage,e_workstarttime,e_workendtime,e_workstatus) values (employee_seq.nextval,#{e_name},#{e_password},#{e_realname},#{e_age},#{e_ethnicity},#{e_phone},#{e_marrige},#{e_address},#{e_hiretime},#{e_cid},#{e_did},#{e_jid},#{e_basicwage},#{e_workstarttime},#{e_workendtime},#{e_workstatus})
     </insert>
+    <update id="updateEmployeeJob" parameterType="com.xyq.model.Employee">
+        update employee set e_did = #{e_did},e_jid = e_{jid} where e_id = #{e_id}
+    </update>
+    <update id="updateEmployeeWorktime" parameterType="com.xyq.model.Employee">
+        update employee set e_workstarttime = #{e_workstarttime},e_workendtime = #{e_workendtime} where e_id = #{e_id}
+    </update>
+    <update id="updateEmployeeWorkstatus" parameterType="com.xyq.model.Employee">
+        update employee set e_workstatus = #{e_workstatus} where e_id = #{e_id}
+    </update>
 </mapper>
