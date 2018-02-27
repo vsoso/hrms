@@ -19,4 +19,5 @@ public class AdministerServiceImpl implements AdministerService {
     public Administer checkAdminister(Administer administer) {
         return administerMapper.checkAdminister(administer);
     }
+
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.AttendanceMapper">
+    <insert id="insertEndWork" parameterType="com.xyq.model.Attendance">
+        insert into attendance (at_id,at_eid,at_endtime,at_endresult,at_day) values (attendance_seq.nextval,#{at_eid},#{at_endtime},#{at_endresult},#{at_day})
+    </insert>
+    <insert id="insertStartWork" parameterType="com.xyq.model.Attendance">
+        insert into attendance (at_id,at_eid,at_starttime,at_startresult,at_day) values (attendance_seq.nextval,#{at_eid},#{at_starttime},#{at_startresult},#{at_day})
+    </insert>
+    <update id="updateWork" parameterType="com.xyq.model.Attendance">
+        update attendance set at_starttime = #{at_starttime} , at_endtime = #{at_endtime} , at_startresult = #{at_startresult} , at_endresult = #{at_endresult} where at_id = #{at_id}
+    </update>
+    <select id="getAttendanceByEid" parameterType="int" resultType="com.xyq.model.Attendance">
+        select at_id,at_eid,at_endtime,at_endresult,at_day,at_starttime,at_startresult from attendance where at_eid = #{value}
+    </select>
+</mapper>

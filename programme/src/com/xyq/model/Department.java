@@ -9,16 +9,16 @@ public class Department implements Serializable {
     private int d_id;
     private String d_name;
     private int d_cid;
-    private String d_cratetime;
+    private String d_createtime;
 
     public Department() {
     }
 
-    public Department(int d_id, String d_name, int d_cid, String d_cratetime) {
+    public Department(int d_id, String d_name, int d_cid, String d_createtime) {
         this.d_id = d_id;
         this.d_name = d_name;
         this.d_cid = d_cid;
-        this.d_cratetime = d_cratetime;
+        this.d_createtime = d_createtime;
     }
 
     public int getD_id() {
@@ -45,12 +45,12 @@ public class Department implements Serializable {
         this.d_cid = d_cid;
     }
 
-    public String getD_cratetime() {
-        return d_cratetime;
+    public String getD_createtime() {
+        return d_createtime;
     }
 
-    public void setD_cratetime(String d_cratetime) {
-        this.d_cratetime = d_cratetime;
+    public void setD_createtime(String d_createtime) {
+        this.d_createtime = d_createtime;
     }
 
     @Override
@@ -59,7 +59,7 @@ public class Department implements Serializable {
                 "d_id=" + d_id +
                 ", d_name='" + d_name + '\'' +
                 ", d_cid=" + d_cid +
-                ", d_cratetime='" + d_cratetime + '\'' +
+                ", d_cratetime='" + d_createtime + '\'' +
                 '}';
     }
 }

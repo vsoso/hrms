@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface CompanyMapper {
     List<Company> getCompany();
+    Company getCompanyByCid(int cid);
 }

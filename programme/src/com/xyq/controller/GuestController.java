@@ -25,6 +25,8 @@ public class GuestController {
     private InterviewService interviewService;
     @Resource
     private CompanyService companyService;
+    @Resource
+    private ApplicationService applicationService;
 
     @RequestMapping("/guest")
     public String guest()throws Exception{
@@ -144,14 +146,10 @@ public class GuestController {
     public String applyForJob(HttpServletRequest request,HttpSession session)throws Exception{
         Recruitment recruitment= (Recruitment) session.getAttribute("recruitment");
         Guest guest= (Guest) session.getAttribute("guest");
-        recruitment.setRm_gid(guest.getG_id());
-        Recruitment recruitment1=recruitment;
-        int applycount=recruitment1.getRm_applycount();
-        recruitment.setRm_applycount(0);
-        recruitmentService.addRecruitment(recruitment);
-        recruitment1.setRm_applycount(applycount+1);
-        recruitment1.setRm_gid(0);
-        recruitmentService.updateRecruitment(recruitment1);
+        Application application=new Application();
+        application.setAp_rmid(recruitment.getRm_id());
+        application.setAp_gid(guest.getG_id());
+        applicationService.addApplication(application);
         return "guestmain";
     }
 

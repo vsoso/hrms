@@ -16,9 +16,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Resource
     private DepartmentMapper departmentMapper;
 
+
     @Override
-    public List<Department> getDepartment() {
-        return departmentMapper.getDepartment();
+    public List<Department> getDepartmentByCid(int c_id) {
+        return departmentMapper.getDepartmentByCid(c_id);
     }
 
     @Override

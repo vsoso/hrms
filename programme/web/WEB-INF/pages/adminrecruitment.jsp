@@ -21,10 +21,9 @@
 <form action="updateRecruitment" method="post">
     <input type="hidden" name="rm_id" value="${recruitment.rm_id}">
     <input type="hidden" name="rm_cid" value="${recruitment.rm_cid}">
-    <input type="hidden" name="rm_applycount" value="${recruitment.rm_applycount}">
     <table>
         <tr>
-            <td>职位名：</td>
+            <td>招聘职位：</td>
             <td><span class="oldrm">${recruitment.rm_name}</span><input type="text" name="rm_name" value="${recruitment.rm_name}" class="uprm"></td>
             <td>招聘人数：</td>
             <td><span class="oldrm">${recruitment.rm_peopleneeded}</span><input type="text" name="rm_peopleneeded" value="${recruitment.rm_peopleneeded}" class="uprm"></td>
@@ -32,17 +31,23 @@
         <tr>
             <td>所需部门：</td>
             <td>
-                <span class="oldrm">${recruitment.rm_did}</span>
-                <select class="uprm">
-
-                </select>
+                <span>
+                    <c:forEach items="${depts}" var="dep">
+                        <c:if test="${dep.d_id==recruitment.rm_did}">
+                            ${dep.d_name}
+                        </c:if>
+                    </c:forEach>
+                </span>
             </td>
             <td>所需职位：</td>
             <td>
-                <span class="oldrm">${recruitment.rm_jid}</span>
-                <select class="uprm">
-
-                </select>
+                <span>
+                    <c:forEach items="${jobs}" var="job">
+                        <c:if test="${job.j_id==recruitment.rm_jid}">
+                            ${job.j_name}
+                        </c:if>
+                    </c:forEach>
+                </span>
             </td>
         </tr>
         <tr>
@@ -70,10 +75,10 @@
 </form>
 <div>
     应聘者：
-    <c:forEach items="${guests}" var="gu">
+    <c:forEach items="${applications}" var="app">
         <c:forEach items="${resumes}" var="res">
-            <a href="checkGuest?g_id=${gu.g_id}">
-                <c:if test="${gu.g_id==res.r_gid}">
+            <a href="checkGuest?g_id=${res.r_gid}">
+                <c:if test="${app.ap_gid==res.r_gid}">
                     <c:out value="${res.r_name}"/>
                 </c:if>
             </a>

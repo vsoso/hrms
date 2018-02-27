@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.ApplicationMapper">
+    <insert id="addApplication" parameterType="com.xyq.model.Application">
+        insert into application(ap_id,ap_rmid,ap_gid) values (application_seq.nextval,#{ap_rmid},#{ap_gid})
+    </insert>
+    <select id="getApplicationByRecruitment" parameterType="int" resultType="com.xyq.model.Application">
+        select ap_id,ap_rmid,ap_gid from application where ap_rmid = #{value}
+    </select>
+</mapper>

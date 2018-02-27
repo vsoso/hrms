@@ -19,8 +19,8 @@ public class JobServiceImpl implements JobService {
     private JobMapper jobMapper;
 
     @Override
-    public List<Job> getJob() {
-        return jobMapper.getJob();
+    public List<Job> getJob(int j_cid) {
+        return jobMapper.getJob(j_cid);
     }
 
     @Override

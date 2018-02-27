@@ -19,4 +19,9 @@ public class CompanyServiceImpl implements CompanyService {
     public List<Company> getCompany() {
         return companyMapper.getCompany();
     }
+
+    @Override
+    public Company getCompanyByCid(int cid) {
+        return companyMapper.getCompanyByCid(cid);
+    }
 }

@@ -56,13 +56,13 @@
                             <input type="button" value="放弃面试" id="refIn"><a href="refuseInterview?i_id=${inte.i_id}" style="display: none"><input type="button" id="refInt"></a>
                         </c:if>
                         <c:if test="${inte.i_gstatus==1}">
-                            你已接受面试，请准时出席
+                            已接受
                         </c:if>
                         <c:if test="${inte.i_gstatus==2}">
-                            你已放弃这次面试机会
+                            已放弃
                         </c:if>
                         <c:if test="${inte.i_gstatus==3}">
-                            你已被该公司录取，请使用员工登录查看更多信息（账号密码相同）
+                            已被该公司录取，请使用员工登录查看更多信息（账号密码相同）
                         </c:if>
                     </td>
                 </tr>
@@ -99,7 +99,7 @@
                 <table>
                     <tr>
                         <td>姓名：</td>
-                        <td><span class="oldre">${resume.r_name}</span><input type="text" name="r_name" class="upre" value="${resume.r_name}"></td>
+                        <td><span class="oldre">${resume.r_name}</span><input type="text" name="r_name" class="upre" value="${resume.r_name}" required="required"></td>
                         <td>年龄：</td>
                         <td><span class="oldre">${resume.r_age}</span><input type="text" name="r_age" class="upre" value="${resume.r_age}"></td>
                     </tr>
@@ -155,65 +155,66 @@
         <c:if test="${resumecount==0}">
             <input type="button" value="新建简历" id="showresume">
         </c:if>
+        <div id="newresume" style="display: none;">
+            <form action="addResume" method="post">
+                <table>
+                    <tr>
+                        <td>姓名：</td>
+                        <td><input type="text" name="r_name"></td>
+                        <td>年龄：</td>
+                        <td><input type="text" name="r_age"></td>
+                    </tr>
+                    <tr>
+                        <td>民族：</td>
+                        <td><input type="text" name="r_ethnicity"></td>
+                        <td>电话：</td>
+                        <td><input type="text" name="r_phone"></td>
+                    </tr>
+                    <tr>
+                        <td>身高：</td>
+                        <td><input type="text" name="r_height"></td>
+                        <td>体重：</td>
+                        <td><input type="text" name="r_weight"></td>
+                    </tr>
+                    <tr>
+                        <td>婚姻状况：</td>
+                        <td><input type="text" name="r_marrige"></td>
+                        <td>毕业学校：</td>
+                        <td><input type="text" name="r_schoolofgraduation"></td>
+                    </tr>
+                    <tr>
+                        <td>家庭住址：</td>
+                        <td colspan="3"><input type="text" name="r_address"></td>
+                    </tr>
+                    <tr>
+                        <td>自我评价：</td>
+                        <td colspan="3">
+                            <textarea name="r_selfassessment"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>实习经历：</td>
+                        <td colspan="3">
+                            <textarea name="r_intership"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>曾获奖项：</td>
+                        <td colspan="4">
+                            <textarea name="r_award"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="新建简历"></td>
+                        <td><input type="button" value="取消创建" id="cancelresume"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </div>
-    <div id="newresume" style="display: none;">
-        <form action="addResume" method="post">
-            <table>
-                <tr>
-                    <td>姓名：</td>
-                    <td><input type="text" name="r_name"></td>
-                    <td>年龄：</td>
-                    <td><input type="text" name="r_age"></td>
-                </tr>
-                <tr>
-                    <td>民族：</td>
-                    <td><input type="text" name="r_ethnicity"></td>
-                    <td>电话：</td>
-                    <td><input type="text" name="r_phone"></td>
-                </tr>
-                <tr>
-                    <td>身高：</td>
-                    <td><input type="text" name="r_height"></td>
-                    <td>体重：</td>
-                    <td><input type="text" name="r_weight"></td>
-                </tr>
-                <tr>
-                    <td>婚姻状况：</td>
-                    <td><input type="text" name="r_marrige"></td>
-                    <td>毕业学校：</td>
-                    <td><input type="text" name="r_schoolofgraduation"></td>
-                </tr>
-                <tr>
-                    <td>家庭住址：</td>
-                    <td colspan="3"><input type="text" name="r_address"></td>
-                </tr>
-                <tr>
-                    <td>自我评价：</td>
-                    <td colspan="3">
-                        <textarea name="r_selfassessment"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>实习经历：</td>
-                    <td colspan="3">
-                        <textarea name="r_intership"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>曾获奖项：</td>
-                    <td colspan="4">
-                        <textarea name="r_award"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="新建简历"></td>
-                    <td><input type="button" value="取消创建" id="cancelresume"></td>
-                    <td></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+
 </body>
 <script src="js/jquery-3.2.1.js"></script>
 <script>
@@ -243,12 +244,10 @@
         })
         $("#recruitment").click(function () {
             $("#r_resume").hide()
-            $("#newresume").hide()
             $("#rm_recruitment").show()
             $("#i_interview").hide()
         })
         $("#resume").click(function () {
-            $("#newresume").hide()
             $("#rm_recruitment").hide()
             $("#r_resume").show()
             $("#i_interview").hide()
@@ -262,7 +261,6 @@
         })
         $("#interview").click(function () {
             $("#r_resume").hide()
-            $("#newresume").hide()
             $("#rm_recruitment").hide()
             $("#i_interview").show()
         })

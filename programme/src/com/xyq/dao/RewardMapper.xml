@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.RewardMapper">
+    <insert id="insertReward" parameterType="com.xyq.model.Reward">
+        insert into reward (re_id,re_eid,re_money,re_reason,re_time,re_cid) values (reward_seq.nextval,#{re_eid},#{re_money},#{re_reason},#{re_time},#{re_cid})
+    </insert>
+    <select id="getRewardByEid" parameterType="int" resultType="com.xyq.model.Reward">
+        select re_id,re_eid,re_money,re_reason,re_time,re_cid from reward where re_eid=#{value}
+    </select>
+    <select id="getRewardByCid" parameterType="int" resultType="com.xyq.model.Reward">
+        select re_id,re_eid,re_money,re_reason,re_time,re_cid from reward where re_cid=#{value}
+    </select>
+</mapper>

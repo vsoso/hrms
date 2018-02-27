@@ -4,4 +4,7 @@
     <select id="getCompany" resultType="com.xyq.model.Company">
         select c_id,c_name,c_companyscale,c_address,c_phone from company
     </select>
+    <select id="getCompanyByCid" parameterType="int" resultType="com.xyq.model.Company">
+        select c_id,c_name,c_companyscale,c_address,c_phone from company where c_id=#{value}
+    </select>
 </mapper>

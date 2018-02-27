@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.TrainMapper">
+    <insert id="addTrain" parameterType="com.xyq.model.Train">
+        insert into train(t_id,t_cid,t_train,t_time,t_address,t_did) values (train_seq.nextval,#{t_cid},#{t_train},#{t_time},#{t_address},#{t_did})
+    </insert>
+    <select id="getTrain" parameterType="int" resultType="com.xyq.model.Train">
+        select t_id,t_cid,t_train,t_time,t_address,t_did from train where t_cid = #{value}
+    </select>
+    <select id="getTrainByDid" parameterType="int" resultType="com.xyq.model.Train">
+        select t_id,t_cid,t_train,t_time,t_address,t_did from train where t_did = #{value}
+    </select>
+    <update id="updateTrain" parameterType="com.xyq.model.Train">
+        update train set t_train = #{t_train},t_time = #{t_time},t_address = #{t_address},t_did = #{t_did} where t_id = #{t_id}
+    </update>
+    <delete id="deleteTrain" parameterType="com.xyq.model.Train">
+        delete from train where t_id = #{t_id}
+    </delete>
+</mapper>

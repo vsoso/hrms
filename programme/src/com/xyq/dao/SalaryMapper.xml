@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyq.dao.SalaryMapper">
+    <select id="getLastMonthSalaryByEid" parameterType="com.xyq.model.Salary" resultType="com.xyq.model.Salary">
+        select s_id,s_eid,s_bonus,s_date,s_status,s_cid,s_money,s_reward,s_basic from salary where s_eid = #{s_eid} and s_date = #{s_date}
+    </select>
+    <select id="getLastMonthSalaryByCid" parameterType="com.xyq.model.Salary" resultType="com.xyq.model.Salary">
+        select s_id,s_eid,s_bonus,s_date,s_status,s_cid,s_money,s_reward,s_basic from salary where s_cid = #{s_cid} and s_date = #{s_date}
+    </select>
+    <select id="getSalaryByEid" parameterType="int" resultType="com.xyq.model.Salary">
+        select s_id,s_eid,s_bonus,s_date,s_status,s_cid,s_money,s_reward,s_basic from salary where s_eid = #{s_eid}
+    </select>
+    <select id="getSalaryByCid" parameterType="int" resultType="com.xyq.model.Salary">
+        select s_id,s_eid,s_bonus,s_date,s_status,s_cid,s_money,s_reward,s_basic from salary where s_cid = #{s_cid}
+    </select>
+    <insert id="insertSalary" parameterType="com.xyq.model.Salary">
+        insert into salary (s_id,s_eid,s_bonus,s_date,s_status,s_cid,s_money,s_reward,s_basic) values (salary_seq.nextval,#{s_eid},#{s_bonus},#{s_date},#{s_status},#{s_cid},#{s_money},#{s_reward},#{s_basic})
+    </insert>
+    <update id="updateSalaryStatus" parameterType="com.xyq.model.Salary">
+        update salary set s_status = #{s_status} where s_id = #{s_id}
+    </update>
+</mapper>

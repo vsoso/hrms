@@ -9,7 +9,7 @@ import java.util.List;
  * Created by asus on 2018/2/2.
  */
 public interface JobService {
-    List<Job> getJob();
+    List<Job> getJob(int j_cid);
     List<Job> getJobByDepartment(Department department);
     Job getJobById(int j_id);
     void addJob(Job job);

@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface CompanyService {
     List<Company> getCompany();
+    Company getCompanyByCid(int cid);
 }

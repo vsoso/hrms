@@ -14,7 +14,7 @@
 <html>
 <head>
     <base href="<%=basePath%>"/>
-    <title>标题</title>
+    <title>招聘信息</title>
 </head>
 <body>
     <div>
@@ -38,6 +38,8 @@
         $("#sub").click(function () {
             if(${guest.g_applicationstatus==1}){
                 alert("你已被公司录取，无法投递简历")
+            }else if(${resumecount==0}){
+                alert("你还没有简历，无法投递")
             }else{
                 alert("简历已提交！")
                 $("#applyForJob").attr("href","applyForJob")
